@@ -1,0 +1,45 @@
+{
+  "name": "codelesscode-web-app",
+  "version": "0.0.1-SNAPSHOT",
+  "description": "SPA for codelesscode",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint",
+    "format": "prettier-eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rydnr/codelesscode-web-app.git"
+  },
+  "keywords": [
+    "ddd",
+    "react",
+    "rest"
+  ],
+  "author": "rydnr",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/rydnr/codelesscode-web-app/issues"
+  },
+  "homepage": "https://github.com/rydnr/codelesscode-web-app#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "eslint": "^5.12.0",
+    "eslint-plugin-jest": "^22.1.2",
+    "eslint-plugin-react": "^7.12.3",
+    "jest": "^23.6.0",
+    "npm": "^6.5.0",
+    "prettier-eslint-cli": "^4.7.1"
+  },
+  "dependencies": {
+    "react": "^16.7.0"
+  }
+}
