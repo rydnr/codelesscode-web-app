@@ -1,6 +1,12 @@
 // src/LogWatch.js
 import React from 'react';
+import propTypes from 'prop-types';
 
-const LogWatch = ({ children }) => <div>{children}</div>;
+const LogWatch = props => <div {...props} />;
+
+
+LogWatch.propTypes = {
+  children: propTypes.node.isRequired,
+};
 
 export default LogWatch;
