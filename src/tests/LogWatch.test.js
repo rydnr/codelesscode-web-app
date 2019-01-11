@@ -11,4 +11,10 @@ describe('LogWatch', () => {
     const wrapper = shallow(<LogWatch />);
     expect(wrapper.type()).toBe('div');
   });
+
+  it('passes `children` through to the <div>', () => {
+    const text = 'sample text';
+    const wrapper = shallow(<LogWatch>{text}</LogWatch>);
+    expect(wrapper.prop('children')).toBe(text);
+  });
 });
