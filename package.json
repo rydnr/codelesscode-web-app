@@ -6,9 +6,10 @@
   "private": true,
   "scripts": {
     "test": "jest",
-    "lint": "eslint",
+    "lint": "eslint .",
     "format": "prettier-eslint",
-    "cucumber": "cucumberjs"
+    "cucumber": "cucumberjs",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.5",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
     "eslint": "^5.12.0",
@@ -43,7 +45,9 @@
     "npm": "^6.5.0",
     "prettier-eslint-cli": "^4.7.1",
     "react-cucumber": "^1.0.7",
-    "react-dom": "^16.7.0"
+    "react-dom": "^16.7.0",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1"
   },
   "dependencies": {
     "prop-types": "^15.6.2",
