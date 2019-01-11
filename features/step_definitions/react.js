@@ -4,5 +4,5 @@ const { register } = require('react-cucumber');
 const { UpperCaseInput } = require('../../src/upper-case-input');
 
 register([
-  UpperCaseInput
+  UpperCaseInput,
 ]);

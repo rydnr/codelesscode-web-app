@@ -4,7 +4,7 @@ import LogWatch from './LogWatch';
 
 class Console extends React.PureComponent {
   state = {
-    enabled: false
+    enabled: false,
   };
 
   render() {
