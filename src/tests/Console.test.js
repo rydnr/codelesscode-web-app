@@ -13,4 +13,8 @@ describe('Console', () => {
   it('renders a <div>', () => {
     expect(wrapper.type()).toBe('div');
   });
+
+  it('is initially disabled', () => {
+    expect(wrapper.state('enabled')).toBe(false);
+  });
 });
