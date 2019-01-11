@@ -1,14 +1,14 @@
 // src/Console.js
 import React from 'react';
-import propTypes from 'prop-types';
+import LogWatch from './LogWatch';
 
 class Console extends React.PureComponent {
   state = {
     enabled: false
   };
-  
+
   render() {
-    return <div />;
+    return <div><LogWatch>LogWatch</LogWatch></div>;
   }
 }
 
