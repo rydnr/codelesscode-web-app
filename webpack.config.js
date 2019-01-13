@@ -1,9 +1,18 @@
 // webpack.config.js
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
   mode: 'development',
   entry: {
     component: './src/Console.js',
+    example: './example/index.js',
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Console Example',
+      chunk: ['console'],
+    }),
+  ],
   module: {
     rules: [
       {
