@@ -1,8 +1,9 @@
 // src/LogWatch.js
 import React from 'react';
 import propTypes from 'prop-types';
+import ReactTable from 'react-table';
 
-const LogWatch = props => <div {...props} />;
+const LogWatch = props => <ReactTable />;
 
 
 LogWatch.propTypes = {
