@@ -3,7 +3,15 @@ import React from 'react';
 import propTypes from 'prop-types';
 import ReactTable from 'react-table';
 
-const LogWatch = props => <ReactTable />;
+const columns = [{
+  Header: 'Timestamp',
+  accessor: 'timestamp'
+},{
+  Header: 'Text',
+  accessor: 'text'
+}];
+
+const LogWatch = props => <ReactTable columns={columns} />;
 
 
 LogWatch.propTypes = {
