@@ -2,8 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const LogWatchEntry = props => (
-    <tr><td>{props.timestamp}</td><td>{props.children}</td></tr>
+const LogWatchEntry = ({ timestamp, children, ...rest }) => (
+    <tr {...rest}><td>{timestamp}</td><td>{children}</td></tr>
 );
 
 LogWatchEntry.propTypes = {
