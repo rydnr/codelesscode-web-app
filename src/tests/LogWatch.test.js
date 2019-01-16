@@ -8,10 +8,10 @@ describe('LogWatch', () => {
   const text = 'sample text';
   const columns = [{
     Header: 'Timestamp',
-    accessor: 'timestamp'
+    accessor: 'timestamp',
   },{
     Header: 'Text',
-    accessor: 'text'
+    accessor: 'text',
   }];
 
   let wrapper;

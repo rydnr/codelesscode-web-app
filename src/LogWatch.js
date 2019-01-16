@@ -5,13 +5,13 @@ import ReactTable from 'react-table';
 
 const columns = [{
   Header: 'Timestamp',
-  accessor: 'timestamp'
+  accessor: 'timestamp',
 },{
   Header: 'Text',
-  accessor: 'text'
+  accessor: 'text',
 }];
 
-const LogWatch = props => <ReactTable columns={columns} />;
+const LogWatch = () => <ReactTable columns={columns} />;
 
 
 LogWatch.propTypes = {
