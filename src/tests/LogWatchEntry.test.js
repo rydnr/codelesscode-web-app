@@ -29,4 +29,14 @@ describe('LogWatchEntry', () => {
   it('passes `children` through to the second child', () => {
     expect(wrapper.childAt(1).text()).toBe(text);
   });
+
+  it('passes other props through to the <tr>', () => {
+    const style = {};
+    const onClick = () => {};
+    const className = 'my-logwatch-entry';
+    wrapper.setProps({ style, onClick, className });
+    expect(wrapper.prop('style')).toBe(style);
+    expect(wrapper.prop('onClick')).toBe(onClick);
+    expect(wrapper.prop('className')).toBe(className);
+  });
 });
