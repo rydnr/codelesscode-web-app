@@ -11,8 +11,25 @@ const columns = [{
   accessor: 'text',
 }];
 
-const LogWatch = () => <ReactTable columns={columns} />;
+class LogWatch extends React.PureComponent {
 
+  renderAsHtmlTable() {
+    return (<table>{this.props.children}</table>);
+  }
+
+  renderAsReactTable() {
+    return (<ReactTable columns={columns}>{this.props.children}</ReactTable>);
+  }
+
+  render() {
+    const { htmlTable } = this.props;
+    if (htmlTable) {
+      return this.renderAsHtmlTable();
+    } else {
+      return this.renderAsReactTable();
+    }
+  }
+}
 
 LogWatch.propTypes = {
   children: propTypes.node.isRequired,
