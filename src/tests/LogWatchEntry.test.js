@@ -39,4 +39,8 @@ describe('LogWatchEntry', () => {
     expect(wrapper.prop('onClick')).toBe(onClick);
     expect(wrapper.prop('className')).toBe(className);
   });
+
+  it('provides a json representation of itself', () => {
+    expect(wrapper.instance().asJson()).toEqual({ timestamp, text });
+  });
 });
