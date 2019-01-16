@@ -6,6 +6,14 @@ import ReactTable from 'react-table';
 
 describe('LogWatch', () => {
   const text = 'sample text';
+  const columns = [{
+    Header: 'Timestamp',
+    accessor: 'timestamp'
+  },{
+    Header: 'Text',
+    accessor: 'text'
+  }];
+
   let wrapper;
 
   beforeEach(() => {
@@ -14,5 +22,9 @@ describe('LogWatch', () => {
 
   it('renders a <ReactTable>', () => {
     expect(wrapper.type()).toBe(ReactTable);
+  });
+
+  it('renders two columns', () => {
+    expect(wrapper.prop('columns')).toEqual(columns);
   });
 });
