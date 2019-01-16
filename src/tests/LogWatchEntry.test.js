@@ -5,9 +5,11 @@ import LogWatchEntry from '../LogWatchEntry';
 
 describe('LogWatchEntry', () => {
   const timestamp = '2019/01/16 21:35:17';
+  const text = 'sample log entry';
+
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<LogWatchEntry timestamp={timestamp} />);
+    wrapper = shallow(<LogWatchEntry timestamp={timestamp}>{text}</LogWatchEntry>);
   });
 
   it('renders a <tr>', () => {
@@ -22,5 +24,9 @@ describe('LogWatchEntry', () => {
 
   it('passes `timestamp` through to the first child', () => {
     expect(wrapper.childAt(0).text()).toBe(timestamp);
+  });
+
+  it('passes `children` through to the second child', () => {
+    expect(wrapper.childAt(1).text()).toBe(text);
   });
 });
