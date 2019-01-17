@@ -13,12 +13,20 @@ const columns = [{
 
 class LogWatch extends React.PureComponent {
 
+  itemsAsJson() {
+    return (this.props.children.map(function(item) {
+      const { timestamp, children } = item.props;
+      return { timestamp: timestamp , text: children };
+    }));
+  }
+
   renderAsHtmlTable() {
     return (<table>{this.props.children}</table>);
   }
 
   renderAsReactTable() {
-    return (<ReactTable columns={columns}>{this.props.children}</ReactTable>);
+    const data = this.itemsAsJson();
+    return (<ReactTable columns={columns} data={data}></ReactTable>);
   }
 
   render() {
@@ -33,6 +41,7 @@ class LogWatch extends React.PureComponent {
 
 LogWatch.propTypes = {
   children: propTypes.node.isRequired,
+  htmlTable: propTypes.bool,
 };
 
 export default LogWatch;
