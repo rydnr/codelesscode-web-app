@@ -2,30 +2,69 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import LogWatch from '../LogWatch';
+import LogWatchEntry from '../LogWatchEntry';
+import ReactTable from 'react-table';
 
 describe('LogWatch', () => {
-  const text = 'sample text';
+  const columns = [{
+    Header: 'Timestamp',
+    accessor: 'timestamp',
+  },{
+    Header: 'Text',
+    accessor: 'text',
+  }];
+
+  const data = [{
+    timestamp: '2010/03/11 10:30:07',
+    text: 'Starting up',
+  },{
+    timestamp: '2010/03/11 10:31:57',
+    text: 'Accepting requests',
+  },{
+    timestamp: '2018/12/31 23:59:59',
+    text: 'Shutting down',
+  }];
+
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<LogWatch>{text}</LogWatch>);
+    wrapper = shallow(
+        <LogWatch>
+        {data.map(function(item, index){
+          return <LogWatchEntry key={index} timestamp={item.timestamp}>{item.text}</LogWatchEntry>;
+        })}
+        </LogWatch>
+    );
   });
 
-  it('renders a <div>', () => {
-    expect(wrapper.type()).toBe('div');
+  it('renders a <table> if htmlTable is enabled', () => {
+    wrapper.setProps({ htmlTable: true });
+    expect(wrapper.type()).toBe('table');
   });
 
-  it('passes `children` through to the <div>', () => {
-    expect(wrapper.prop('children')).toBe(text);
+  it('renders a <ReactTable> by default', () => {
+    expect(wrapper.type()).toBe(ReactTable);
   });
 
-  it('passes other props through to the <div>', () => {
-    const onClick = () => {};
-    const className = 'my-logwatch';
-    const dataAction = 'refresh';
-    wrapper.setProps({ onClick, className, 'data-action': dataAction});
-    expect(wrapper.prop('onClick')).toBe(onClick);
-    expect(wrapper.prop('className')).toBe(className);
-    expect(wrapper.prop('data-action')).toBe(dataAction);
+  it('renders two columns', () => {
+    expect(wrapper.prop('columns')).toEqual(columns);
+  });
+
+  it('renders a number of <LogWatchEntry> items only if htmlTable is enabled', () => {
+    wrapper.setProps({ htmlTable: true });
+    expect(wrapper.children().length).toBe(data.length);
+    data.map(function(item, index) {
+      expect(wrapper.childAt(index).type()).toBe(LogWatchEntry);
+    });
+  });
+
+  it('doesn\'t render any <LogWatchEntry> items if htmlTable is not enabled', () => {
+    wrapper.setProps({ htmlTable: false });
+    expect(wrapper.children().length).toBe(0);
+  });
+
+  it('provides the <LogWatchEntry> information in the "data" prop of ReactTable', () => {
+    wrapper.setProps({ htmlTable: false });
+    expect(wrapper.prop('data')).toEqual(data);
   });
 });
