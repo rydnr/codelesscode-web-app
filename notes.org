@@ -1,0 +1,7 @@
+* Testing frameworks
+
+- Mocha: Test framework. Assertions, expectations.
+- Sinonjs: Stubbing framework. Fake and spy on function calls.
+- Mochawesome: Reporting. HTML reports that generate each run -> CI/CD.
+- Enzyme: React test utility. Rendering mechanisms, access to component instances and children.
+- Istanbul: Reporting. Code coverage.
