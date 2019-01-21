@@ -11,25 +11,13 @@ class Console extends React.PureComponent {
       text: PropTypes.string.isRequired,
     })).isRequired,
   }
+
   state = {
     enabled: false,
   };
 
-  renderLogWatchEntries = () => {
-    let entries = [];
-
-    const { logEntries } = this.props;
-
-    logEntries.forEach((each, index) => {
-      const key = 'log-' + index;
-      entries.push(<LogWatchEntry key={key} timestamp={each.timestamp}>{each.text}</LogWatchEntry>);
-    });
-
-    return entries;
-  };
-
   render() {
-    return (<div><LogWatch>{this.renderLogWatchEntries()}</LogWatch></div>);
+    return (<div><LogWatch logEntries={this.props.logEntries} /></div>);
   }
 }
 

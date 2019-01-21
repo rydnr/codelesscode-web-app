@@ -8,7 +8,18 @@ describe('Console', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Console />);
+    const data = [{
+      timestamp: '2010/03/11 10:30:07',
+      text: 'Starting up',
+    },{
+      timestamp: '2010/03/11 10:31:57',
+      text: 'Accepting requests',
+    },{
+      timestamp: '2018/12/31 23:59:59',
+      text: 'Shutting down',
+    }];
+
+    wrapper = shallow(<Console logEntries={data} />);
   });
 
   it('renders a <div>', () => {
@@ -19,7 +30,7 @@ describe('Console', () => {
     expect(wrapper.state('enabled')).toBe(false);
   });
 
-  it('renders a LogWatch with a sample text', () => {
-    expect(wrapper.find(LogWatch).at(0).prop('children')).toBe('LogWatch');
+  it('renders a LogWatch element', () => {
+    expect(wrapper.find(LogWatch).at(0).type()).toBe(LogWatch);
   });
 });

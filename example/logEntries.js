@@ -24,5 +24,5 @@ export default [
     },{
         timestamp: '2019/01/20 10:38:01',
         text: 'HealthCheck requested',
-    }
+    },
 ]
