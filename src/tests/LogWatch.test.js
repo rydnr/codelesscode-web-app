@@ -28,13 +28,7 @@ describe('LogWatch', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(
-        <LogWatch>
-        {data.map(function(item, index){
-          return <LogWatchEntry key={index} timestamp={item.timestamp}>{item.text}</LogWatchEntry>;
-        })}
-        </LogWatch>
-    );
+    wrapper = shallow(<LogWatch logEntries={data}></LogWatch>);
   });
 
   it('renders a <table> if htmlTable is enabled', () => {

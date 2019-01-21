@@ -4,6 +4,11 @@ import PropTypes from 'prop-types';
 
 class LogWatchEntry extends React.PureComponent {
 
+  static propTypes = {
+    timestamp: PropTypes.string.isRequired,
+    children: PropTypes.string.isRequired,
+  };
+
   render() {
     const { timestamp, children, ...rest } = this.props;
     return (<tr {...rest}><td>{timestamp}</td><td>{children}</td></tr>);
@@ -14,10 +19,5 @@ class LogWatchEntry extends React.PureComponent {
     return { timestamp: timestamp, text: children };
   }
 }
-
-LogWatchEntry.propTypes = {
-  timestamp: PropTypes.string.isRequired,
-  children: PropTypes.string.isRequired,
-};
 
 export default LogWatchEntry;

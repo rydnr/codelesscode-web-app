@@ -1,6 +1,7 @@
 // src/LogWatch.js
 import React from 'react';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import LogWatchEntry from './LogWatchEntry';
 import ReactTable from 'react-table';
 
 const columns = [{
@@ -13,24 +14,42 @@ const columns = [{
 
 class LogWatch extends React.PureComponent {
 
-  itemsAsJson() {
-    return (this.props.children.map(function(item) {
-      const { timestamp, children } = item.props;
-      return { timestamp: timestamp , text: children };
-    }));
-  }
+  static propTypes = {
+    logEntries: PropTypes.arrayOf(PropTypes.shape({
+      timestamp: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+    })).isRequired,
+    htmlTable: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    htmlTable: false,
+  };
+
+  renderLogWatchEntries(props) {
+    let entries = [];
+
+    const { logEntries } = props;
+
+    logEntries.forEach((item, index) => {
+      const key = 'log-' + index;
+      entries.push(<LogWatchEntry key={key} timestamp={item.timestamp}>{item.text}</LogWatchEntry>);
+    });
+
+    return entries;
+  };
 
   renderAsHtmlTable() {
-    return (<table>{this.props.children}</table>);
+    return (<table>{this.renderLogWatchEntries(this.props)}</table>);
   }
 
   renderAsReactTable() {
-    const data = this.itemsAsJson();
-    return (<ReactTable columns={columns} data={data}></ReactTable>);
+    return (<ReactTable columns={columns} data={this.props.logEntries}></ReactTable>);
   }
 
   render() {
-    const { htmlTable } = this.props;
+    const { htmlTable, logEntries } = this.props;
+
     if (htmlTable) {
       return this.renderAsHtmlTable();
     } else {
@@ -38,10 +57,5 @@ class LogWatch extends React.PureComponent {
     }
   }
 }
-
-LogWatch.propTypes = {
-  children: propTypes.node.isRequired,
-  htmlTable: propTypes.bool,
-};
 
 export default LogWatch;
