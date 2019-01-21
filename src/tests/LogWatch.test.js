@@ -6,13 +6,6 @@ import LogWatchEntry from '../LogWatchEntry';
 import ReactTable from 'react-table';
 
 describe('LogWatch', () => {
-  const columns = [{
-    Header: 'Timestamp',
-    accessor: 'timestamp',
-  },{
-    Header: 'Text',
-    accessor: 'text',
-  }];
 
   const data = [{
     timestamp: '2010/03/11 10:30:07',
@@ -33,32 +26,32 @@ describe('LogWatch', () => {
 
   it('renders a <table> if htmlTable is enabled', () => {
     wrapper.setProps({ htmlTable: true });
-    expect(wrapper.type()).toBe('table');
+    expect(wrapper.find('table').type()).toBe('table');
   });
 
   it('renders a <ReactTable> by default', () => {
-    expect(wrapper.type()).toBe(ReactTable);
+    expect(wrapper.find(ReactTable).at(0).type()).toBe(ReactTable);
   });
 
   it('renders two columns', () => {
-    expect(wrapper.prop('columns')).toEqual(columns);
+    expect(wrapper.find('ReactTable').at(0).prop('columns')).toEqual(LogWatch.columns);
   });
 
   it('renders a number of <LogWatchEntry> items only if htmlTable is enabled', () => {
     wrapper.setProps({ htmlTable: true });
-    expect(wrapper.children().length).toBe(data.length);
+    expect(wrapper.find('table').at(0).children().length).toBe(data.length);
     data.map(function(item, index) {
-      expect(wrapper.childAt(index).type()).toBe(LogWatchEntry);
+      expect(wrapper.find('table').at(0).childAt(index).type()).toBe(LogWatchEntry);
     });
   });
 
   it('doesn\'t render any <LogWatchEntry> items if htmlTable is not enabled', () => {
     wrapper.setProps({ htmlTable: false });
-    expect(wrapper.children().length).toBe(0);
+    expect(wrapper.children().length).toBe(2);
   });
 
-  it('provides the <LogWatchEntry> information in the "data" prop of ReactTable', () => {
+  it('provides the log entries in the "data" prop of ReactTable', () => {
     wrapper.setProps({ htmlTable: false });
-    expect(wrapper.prop('data')).toEqual(data);
+    expect(wrapper.find(ReactTable).at(0).prop('data')).toEqual(data);
   });
 });

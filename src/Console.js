@@ -2,7 +2,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import LogWatch from './LogWatch';
-import LogWatchEntry from './LogWatchEntry';
+import styled from 'styled-components';
+
+const H1 = styled.h1`
+  width: 100%;
+`;
 
 class Console extends React.PureComponent {
   static propTypes = {
